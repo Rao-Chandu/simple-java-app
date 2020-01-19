@@ -1,0 +1,22 @@
+- hosts: all
+  become: true
+  tasks:
+   - name: Log into DockerHub
+     docker_login:
+      username: rchandu3447
+      password: chandu@123
+      email: raochandu.dev@gmail.com   
+      
+   - name: Pull image from docker hub
+     command: docker pull rchandu3447/chandu9-devops:"{{buildNumber}}"
+
+   - name: Stop current running container
+     command: docker stop chandu-c1
+     ignore_errors: yes
+
+   - name: Remove stopped container
+     command: docker rm chandu-c1
+     ignore_errors: yes
+
+   - name: Run a container from the pulled image
+     command: docker run -d --name chandu-c1 -p 8080:8080 rchandu3447/chandu9-devops:"{{buildNumber}}"
