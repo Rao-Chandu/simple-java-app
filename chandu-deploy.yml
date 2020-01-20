@@ -1,8 +1,10 @@
-apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
-kind: Deployment
-metadata:
+- hosts: kube
+  become: true
+  apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+  kind: Deployment
+  metadata:
   name: chandu-deployment
-spec:
+  spec:
   selector:
     matchLabels:
       app: chandu-devops-project
