@@ -1,0 +1,20 @@
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: chandu-deployment
+spec:
+  selector:
+    matchLabels:
+      app: chandu-devops-project
+  replicas: 2 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: chandu-devops-project
+    spec:
+      containers:
+      - name: chandu-c1
+        image: rchandu3447/chandu9-devops
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
