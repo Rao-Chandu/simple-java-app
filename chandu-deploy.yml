@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: chandu-c1
-        image: rchandu3447/chandu9-devops
+        image: rchandu3447/chandu9-devops:"{{buildNumber}}"
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
